@@ -11,7 +11,7 @@ namespace DailyNewsServer.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FilesController : ControllerBase
+    public class FilesController : BaseController
     {
         private IFilesRepository _filesRepository;
 
