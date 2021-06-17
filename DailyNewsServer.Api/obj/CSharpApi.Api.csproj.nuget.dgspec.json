@@ -1,0 +1,317 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Api\\CSharpApi.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Api\\CSharpApi.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Api\\CSharpApi.Api.csproj",
+        "projectName": "CSharpApi.Api",
+        "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Api\\CSharpApi.Api.csproj",
+        "packagesPath": "C:\\Users\\trq0350\\.nuget\\packages\\",
+        "outputPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\trq0350\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj": {
+                "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj"
+              },
+              "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Data\\CSharpApi.Data.csproj": {
+                "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Data\\CSharpApi.Data.csproj"
+              },
+              "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Infrastructure\\CSharpApi.Infrastructure.csproj": {
+                "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Infrastructure\\CSharpApi.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "AWSSDK.Extensions.NETCore.Setup": {
+              "target": "Package",
+              "version": "[3.7.0.1, )"
+            },
+            "AWSSDK.s3": {
+              "target": "Package",
+              "version": "[3.7.0.23, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.5.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj",
+        "projectName": "CSharpApi.Core",
+        "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj",
+        "packagesPath": "C:\\Users\\trq0350\\.nuget\\packages\\",
+        "outputPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\trq0350\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Data\\CSharpApi.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Data\\CSharpApi.Data.csproj",
+        "projectName": "CSharpApi.Data",
+        "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Data\\CSharpApi.Data.csproj",
+        "packagesPath": "C:\\Users\\trq0350\\.nuget\\packages\\",
+        "outputPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\trq0350\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj": {
+                "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Infrastructure\\CSharpApi.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Infrastructure\\CSharpApi.Infrastructure.csproj",
+        "projectName": "CSharpApi.Infrastructure",
+        "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Infrastructure\\CSharpApi.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\trq0350\\.nuget\\packages\\",
+        "outputPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\trq0350\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj": {
+                "projectPath": "C:\\denvernaidoo\\DailyNewsServer\\CSharpApi.Core\\CSharpApi.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "AWSSDK.s3": {
+              "target": "Package",
+              "version": "[3.7.0.23, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

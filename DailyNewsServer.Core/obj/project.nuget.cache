@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "d8InQI531XXGVJbRG3ZU3OZX0935IU7eGLjCVq/30xM18zWz5h4mbfkDvwXCrQ0s3tBlhLHwrahccwZvoR3iCQ==",
+  "success": true,
+  "projectFilePath": "C:\\denvernaidoo\\DailyNewsServer\\DailyNewsServer.Core\\DailyNewsServer.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\trq0350\\.nuget\\packages\\bcrypt.net-next\\4.0.2\\bcrypt.net-next.4.0.2.nupkg.sha512",
+    "C:\\Users\\trq0350\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.6\\microsoft.aspnetcore.http.features.5.0.6.nupkg.sha512",
+    "C:\\Users\\trq0350\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\trq0350\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
+    "C:\\Users\\trq0350\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\trq0350\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
+    "C:\\Users\\trq0350\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

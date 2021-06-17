@@ -1,0 +1,17 @@
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\bin\Debug\netcoreapp3.1\DailyNewsServer.Core.deps.json
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\bin\Debug\netcoreapp3.1\DailyNewsServer.Core.dll
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\bin\Debug\netcoreapp3.1\DailyNewsServer.Core.pdb
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.AssemblyInfoInputs.cache
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.AssemblyInfo.cs
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.csproj.CoreCompileInputs.cache
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.dll
+C:\denvernaidoo\DailyNewsServer\CSharpApi.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.pdb
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\bin\Debug\netcoreapp3.1\DailyNewsServer.Core.deps.json
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\bin\Debug\netcoreapp3.1\DailyNewsServer.Core.dll
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\bin\Debug\netcoreapp3.1\DailyNewsServer.Core.pdb
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.csprojAssemblyReference.cache
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.AssemblyInfoInputs.cache
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.AssemblyInfo.cs
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.csproj.CoreCompileInputs.cache
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.dll
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Core\obj\Debug\netcoreapp3.1\DailyNewsServer.Core.pdb

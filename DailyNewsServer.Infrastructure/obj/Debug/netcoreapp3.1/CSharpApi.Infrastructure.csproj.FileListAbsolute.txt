@@ -1,0 +1,12 @@
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\bin\Debug\netcoreapp3.1\CSharpApi.Infrastructure.deps.json
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\bin\Debug\netcoreapp3.1\CSharpApi.Infrastructure.dll
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\bin\Debug\netcoreapp3.1\CSharpApi.Infrastructure.pdb
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\bin\Debug\netcoreapp3.1\CSharpApi.Core.dll
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\bin\Debug\netcoreapp3.1\CSharpApi.Core.pdb
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\obj\Debug\netcoreapp3.1\CSharpApi.Infrastructure.csprojAssemblyReference.cache
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\obj\Debug\netcoreapp3.1\CSharpApi.Infrastructure.AssemblyInfoInputs.cache
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\obj\Debug\netcoreapp3.1\CSharpApi.Infrastructure.AssemblyInfo.cs
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\obj\Debug\netcoreapp3.1\CSharpApi.Infrastructure.csproj.CoreCompileInputs.cache
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\obj\Debug\netcoreapp3.1\CSharpApi.Infrastructure.csproj.CopyComplete
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\obj\Debug\netcoreapp3.1\CSharpApi.Infrastructure.dll
+C:\denvernaidoo\CSharpApi\CSharpApi.Infrastructure\obj\Debug\netcoreapp3.1\CSharpApi.Infrastructure.pdb

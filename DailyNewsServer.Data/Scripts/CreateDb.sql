@@ -1,0 +1,219 @@
+USE [master]
+GO
+/****** Object:  Database [ContosoUniversity]    Script Date: 6/16/2021 6:26:02 PM ******/
+CREATE DATABASE [ContosoUniversity]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'ContosoUniversity', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\ContosoUniversity.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'ContosoUniversity_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\DATA\ContosoUniversity_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [ContosoUniversity] SET COMPATIBILITY_LEVEL = 130
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [ContosoUniversity].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [ContosoUniversity] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [ContosoUniversity] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [ContosoUniversity] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [ContosoUniversity] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [ContosoUniversity] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET RECOVERY FULL 
+GO
+ALTER DATABASE [ContosoUniversity] SET  MULTI_USER 
+GO
+ALTER DATABASE [ContosoUniversity] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [ContosoUniversity] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [ContosoUniversity] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [ContosoUniversity] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [ContosoUniversity] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [ContosoUniversity] SET QUERY_STORE = OFF
+GO
+USE [ContosoUniversity]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+USE [ContosoUniversity]
+GO
+/****** Object:  Table [dbo].[Course]    Script Date: 6/16/2021 6:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Course](
+	[CourseId] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [varchar](max) NOT NULL,
+	[Credits] [int] NOT NULL,
+ CONSTRAINT [PK_Course] PRIMARY KEY CLUSTERED 
+(
+	[CourseId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Enrollment]    Script Date: 6/16/2021 6:26:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Enrollment](
+	[EnrollmentId] [int] IDENTITY(1,1) NOT NULL,
+	[CourseId] [int] NOT NULL,
+	[StudentId] [int] NOT NULL,
+	[Grade] [varchar](1) NULL,
+ CONSTRAINT [PK_Enrollment] PRIMARY KEY CLUSTERED 
+(
+	[EnrollmentId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Role]    Script Date: 6/16/2021 6:26:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Role](
+	[RoleId] [int] IDENTITY(1,1) NOT NULL,
+	[Description] [varchar](200) NOT NULL,
+ CONSTRAINT [PK_Role] PRIMARY KEY CLUSTERED 
+(
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Student]    Script Date: 6/16/2021 6:26:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Student](
+	[StudentId] [int] IDENTITY(1,1) NOT NULL,
+	[LastName] [varchar](max) NOT NULL,
+	[FirstMidName] [varchar](max) NOT NULL,
+	[EnrollmentDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED 
+(
+	[StudentId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 6/16/2021 6:26:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[UserId] [int] IDENTITY(1,1) NOT NULL,
+	[EmailAddress] [varchar](200) NOT NULL,
+	[PasswordHash] [varchar](200) NOT NULL,
+	[FirstName] [varchar](200) NOT NULL,
+	[Surname] [varchar](200) NOT NULL,
+	[RoleId] [int] NOT NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Course] ON 
+GO
+INSERT [dbo].[Course] ([CourseId], [Title], [Credits]) VALUES (2, N'Docker 101', 16)
+GO
+SET IDENTITY_INSERT [dbo].[Course] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Enrollment] ON 
+GO
+INSERT [dbo].[Enrollment] ([EnrollmentId], [CourseId], [StudentId], [Grade]) VALUES (1, 2, 1, N'A')
+GO
+SET IDENTITY_INSERT [dbo].[Enrollment] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Role] ON 
+GO
+INSERT [dbo].[Role] ([RoleId], [Description]) VALUES (1, N'Administrators')
+GO
+INSERT [dbo].[Role] ([RoleId], [Description]) VALUES (2, N'Users')
+GO
+SET IDENTITY_INSERT [dbo].[Role] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Student] ON 
+GO
+INSERT [dbo].[Student] ([StudentId], [LastName], [FirstMidName], [EnrollmentDate]) VALUES (1, N'Engelbrecht', N'Stephen', CAST(N'2021-01-10T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Student] OFF
+GO
+SET IDENTITY_INSERT [dbo].[User] ON 
+GO
+INSERT [dbo].[User] ([UserId], [EmailAddress], [PasswordHash], [FirstName], [Surname], [RoleId]) VALUES (1, N'denver1983@gmail.com', N'$2a$11$LKFEuwUcYigN7G5slwWrKO3httBqsbxZYKGRFhB5vUXCT8HPv4Sx.', N'Denver', N'Naidoo', 1)
+GO
+SET IDENTITY_INSERT [dbo].[User] OFF
+GO
+ALTER TABLE [dbo].[Enrollment]  WITH CHECK ADD  CONSTRAINT [FK_Enrollment_Course] FOREIGN KEY([CourseId])
+REFERENCES [dbo].[Course] ([CourseId])
+GO
+ALTER TABLE [dbo].[Enrollment] CHECK CONSTRAINT [FK_Enrollment_Course]
+GO
+ALTER TABLE [dbo].[Enrollment]  WITH CHECK ADD  CONSTRAINT [FK_Enrollment_Student] FOREIGN KEY([StudentId])
+REFERENCES [dbo].[Student] ([StudentId])
+GO
+ALTER TABLE [dbo].[Enrollment] CHECK CONSTRAINT [FK_Enrollment_Student]
+GO
+ALTER TABLE [dbo].[User]  WITH CHECK ADD  CONSTRAINT [FK_User_Role] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[Role] ([RoleId])
+GO
+ALTER TABLE [dbo].[User] CHECK CONSTRAINT [FK_User_Role]
+GO
+USE [master]
+GO
+ALTER DATABASE [ContosoUniversity] SET  READ_WRITE 
+GO
