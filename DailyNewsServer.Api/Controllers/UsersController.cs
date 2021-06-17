@@ -3,6 +3,7 @@ using DailyNewsServer.Core.Interfaces;
 using DailyNewsServer.Core.Models;
 using DailyNewsServer.Core.Models.Config;
 using DailyNewsServer.Core.Models.Login;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -58,6 +59,13 @@ namespace DailyNewsServer.Api.Controllers
             return new OkObjectResult(response);
         }
 
+        [HttpPost]
+        [Route("[action]")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult AllUsers()
+        {
+            return Ok();
+        }
         private string GenerateToken(User user)
         {
             var Claims = new List<Claim>

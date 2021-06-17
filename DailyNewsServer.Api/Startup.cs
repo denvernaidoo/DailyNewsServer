@@ -38,13 +38,12 @@ namespace DailyNewsServer.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SchoolContext>(options =>
+            services.AddDbContext<DailyNewsDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddScoped<DbContext, SchoolContext>();
+            services.AddScoped<DbContext, DailyNewsDbContext>();
 
             //Service Lifetimes https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection#service-lifetimes
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IUserService, UserService>();
             services.AddSingleton<IFilesRepository, FilesRepository>();
 
