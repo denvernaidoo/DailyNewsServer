@@ -15,5 +15,16 @@ namespace DailyNewsServer.Api.Controllers
                 return User.Identity.Name;
             }
         }
+
+        public string IpAddress
+        {
+            get
+            {
+                if (Request.Headers.ContainsKey("X-Forwarded-For"))
+                    return Request.Headers["X-Forwarded-For"];
+                else
+                    return HttpContext.Connection.RemoteIpAddress.MapToIPv4().ToString();
+            }
+        }
     }
 }
