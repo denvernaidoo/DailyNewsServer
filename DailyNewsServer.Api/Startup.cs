@@ -22,6 +22,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using DailyNewsServer.Core.Models.Config;
+using System.Diagnostics;
 
 namespace DailyNewsServer.Api
 {
@@ -39,7 +40,10 @@ namespace DailyNewsServer.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DailyNewsDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                // use EnableSensitiveDataLogging to see data related used in query
+                //.EnableSensitiveDataLogging()
+                .LogTo(log => Debug.WriteLine(log)));
             services.AddScoped<DbContext, DailyNewsDbContext>();
 
             //Service Lifetimes https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection#service-lifetimes

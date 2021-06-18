@@ -1,6 +1,7 @@
 ﻿using BCrypt.Net;
 using DailyNewsServer.Core.Interfaces;
 using DailyNewsServer.Core.Models;
+using DailyNewsServer.Core.Models.Authenticate;
 using DailyNewsServer.Core.Models.Config;
 using DailyNewsServer.Core.Models.Login;
 using Microsoft.AspNetCore.Authorization;
@@ -18,72 +19,98 @@ using System.Threading.Tasks;
 
 namespace DailyNewsServer.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+    [Route("api/[controller]")]
     public class UsersController : BaseController
     {
-        private AppSettings _appSettings;
         private IUserService _userService;
-
-        public UsersController(IOptions<AppSettings> appSettings, IUserService userService)
+        public UsersController(IUserService userService)
         {
-            _appSettings = appSettings.Value;
             _userService = userService;
         }
-
-        [HttpPost]
-        [Route("[action]")]
-        public IActionResult Login([FromBody] LoginRequest login)
+        
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody] AuthenticateRequest model)
         {
-            var user = _userService.GetUserByEmailAddress(login.Username);
-            if (user == null)
-            {
-                return Unauthorized();
-            }
-            bool verified = _userService.Verify(login.Password,user.PasswordHash);
-            if (!verified)
-            {
-                return Unauthorized();
-            }
+            var response = _userService.Authenticate(model, IpAddress);
 
-            var response = new LoginResponse
-            {
-                UserId = user.UserId,
-                Username = user.EmailAddress,
-                FirstName = user.FirstName,
-                Surname = user.Surname,
-                Role = user.Role.Description,
-                Token = GenerateToken(user)
-            };
+            if (response == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
 
-            return new OkObjectResult(response);
+            setTokenCookie(response.RefreshToken);
+
+            return Ok(response);
         }
 
-        [HttpPost]
-        [Route("[action]")]
-        [Authorize(Roles = "Admin")]
-        public IActionResult AllUsers()
+        [AllowAnonymous]
+        [HttpPost("refresh-token")]
+        public IActionResult RefreshToken()
         {
-            return Ok();
+            var refreshToken = Request.Cookies["refreshToken"];
+            var response = _userService.RefreshToken(refreshToken, IpAddress);
+
+            if (response == null)
+                return Unauthorized(new { message = "Invalid token" });
+
+            setTokenCookie(response.RefreshToken);
+
+            return Ok(response);
         }
-        private string GenerateToken(User user)
+
+        [HttpPost("revoke-token")]
+        public IActionResult RevokeToken([FromBody] RevokeTokenRequest model)
         {
-            var Claims = new List<Claim>
+            // accept token from request body or cookie
+            var token = model.Token ?? Request.Cookies["refreshToken"];
+
+            if (string.IsNullOrEmpty(token))
+                return BadRequest(new { message = "Token is required" });
+
+            var response = _userService.RevokeToken(token, IpAddress);
+
+            if (!response)
+                return NotFound(new { message = "Token not found" });
+
+            return Ok(new { message = "Token revoked" });
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var users = _userService.GetAll();
+            return Ok(users);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var user = _userService.GetById(id);
+            if (user == null) return NotFound();
+
+            return Ok(user);
+        }
+
+        [HttpGet("{id}/refresh-tokens")]
+        public IActionResult GetRefreshTokens(int id)
+        {
+            var user = _userService.GetById(id);
+            if (user == null) return NotFound();
+
+            return Ok(user.RefreshTokens);
+        }
+
+        // helper methods
+
+        private void setTokenCookie(string token)
+        {
+            var cookieOptions = new CookieOptions
             {
-                new Claim(ClaimTypes.Name, user.EmailAddress),
-                new Claim(ClaimTypes.Role, user.Role.Description)
+                HttpOnly = true,
+                Expires = DateTime.UtcNow.AddDays(7)
             };
-
-            var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_appSettings.Secret));
-
-            var Token = new JwtSecurityToken(
-                "https://csharpapi.com",
-                "https://csharpapi.com",
-                Claims,
-                expires: DateTime.Now.AddDays(30.0),
-                signingCredentials: new SigningCredentials(Key, SecurityAlgorithms.HmacSha256)
-            );
-            return new JwtSecurityTokenHandler().WriteToken(Token);
+            Response.Cookies.Append("refreshToken", token, cookieOptions);
         }
     }
 }

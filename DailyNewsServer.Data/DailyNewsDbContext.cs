@@ -13,6 +13,7 @@ namespace DailyNewsServer.Data
         }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,7 @@ namespace DailyNewsServer.Data
              */
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Role>().ToTable("Role");
+            modelBuilder.Entity<RefreshToken>().ToTable("RefreshToken");
         }
     }
 }

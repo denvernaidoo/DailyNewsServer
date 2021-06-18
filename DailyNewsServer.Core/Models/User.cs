@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace DailyNewsServer.Core.Models
 {
@@ -13,5 +14,7 @@ namespace DailyNewsServer.Core.Models
         public string Surname { get; set; }
         public int RoleId { get; set; }
         public Role Role { get; set; }
+        [JsonIgnore]
+        public List<RefreshToken> RefreshTokens { get; set; }
     }
 }

@@ -51,6 +51,39 @@ namespace DailyNewsServer.Data.Data
             IEnumerable<TEntity> results = query.Where(predicate).ToList();
             return results;
         }
+
+        public void Update(TEntity entity)
+        {
+            _dBSet.Update(entity);
+            _context.SaveChanges();
+        }
+
+        public void UpdateRange(List<TEntity> entities)
+        {
+            _dBSet.UpdateRange(entities);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var entity = FindByKey(id);
+            if (entity == null)
+            {
+                throw new ArgumentNullException("delete entity cannot be found");
+            }
+            _dBSet.Remove(entity);
+            _context.SaveChanges();
+        }
+
+        public void Insert(TEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            _dBSet.Add(entity);
+            _context.SaveChanges();
+        }
         #endregion
 
         #region Asynchronous Repository Methods
@@ -83,6 +116,35 @@ namespace DailyNewsServer.Data.Data
             var query = GetAllIncluding(includeProperties);
             IEnumerable<TEntity> results = await query.Where(predicate).ToListAsync();
             return results;
+        }
+
+        public async Task UpdateAsync(TEntity entity)
+        {
+            _dBSet.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateRangeAsync(List<TEntity> entities)
+        {
+            _dBSet.UpdateRange(entities);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var entity = await FindByKeyAsync(id);
+            _dBSet.Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task InsertAsync(TEntity entity)
+        {
+            if (entity == null)
+            {
+                throw new ArgumentNullException("entity");
+            }
+            _dBSet.Add(entity);
+            await _context.SaveChangesAsync();
         }
         #endregion
 
