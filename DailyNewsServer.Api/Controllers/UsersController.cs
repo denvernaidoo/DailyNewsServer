@@ -92,10 +92,8 @@ namespace DailyNewsServer.Api.Controllers
         [HttpGet("{id}/refresh-tokens")]
         public IActionResult GetRefreshTokens(int id)
         {
-            var user = _userService.GetById(id);
-            if (user == null) return NotFound();
-
-            return Ok(user.RefreshTokens);
+            var refreshTokens = _userService.GetAllRefreshTokens(id);
+            return Ok(refreshTokens);
         }
 
         // helper methods

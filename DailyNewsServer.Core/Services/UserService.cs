@@ -122,6 +122,11 @@ namespace DailyNewsServer.Core.Services
             return _userRepository.FindByKey(id);
         }
 
+        public List<RefreshToken> GetAllRefreshTokens(int userId)
+        {
+            return _refreshTokenRepository.FindBy(r => r.UserId == userId).ToList();
+        }
+
         private string generateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();

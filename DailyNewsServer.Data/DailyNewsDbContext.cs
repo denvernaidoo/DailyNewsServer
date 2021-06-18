@@ -1,4 +1,5 @@
 ﻿using DailyNewsServer.Core.Models;
+using DailyNewsServer.Core.Models.Authenticate;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -15,5 +15,6 @@ namespace DailyNewsServer.Core.Interfaces
         bool RevokeToken(string token, string ipAddress);
         IEnumerable<User> GetAll();
         User GetById(int id);
+        List<RefreshToken> GetAllRefreshTokens(int userId);
     }
 }
