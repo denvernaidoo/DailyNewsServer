@@ -1,9 +1,6 @@
-﻿using BCrypt.Net;
-using DailyNewsServer.Core.Interfaces;
+﻿using DailyNewsServer.Core.Interfaces;
 using DailyNewsServer.Core.Models;
 using DailyNewsServer.Core.Models.Authenticate;
-using DailyNewsServer.Core.Models.Config;
-using DailyNewsServer.Core.Models.Login;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
