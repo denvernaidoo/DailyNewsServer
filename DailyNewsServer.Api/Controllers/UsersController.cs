@@ -4,6 +4,7 @@ using DailyNewsServer.Core.Models.Authenticate;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -21,9 +22,11 @@ namespace DailyNewsServer.Api.Controllers
     [Route("api/[controller]")]
     public class UsersController : BaseController
     {
+        private ILogger<UsersController> _logger;
         private IUserService _userService;
-        public UsersController(IUserService userService)
+        public UsersController(ILogger<UsersController> logger, IUserService userService)
         {
+            _logger = logger;
             _userService = userService;
         }
         
@@ -37,7 +40,7 @@ namespace DailyNewsServer.Api.Controllers
                 return BadRequest(new { message = "Username or password is incorrect" });
 
             setTokenCookie(response.RefreshToken);
-
+            _logger.LogInformation("Client authenticated, {@AuthenticateResponse} returned", response);
             return Ok(response);
         }
 
