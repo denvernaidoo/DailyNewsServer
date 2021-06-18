@@ -66,7 +66,7 @@ namespace DailyNewsServer.Core.Services
 
         public AuthenticateResponse RefreshToken(string token, string ipAddress)
         {
-            var user = _userRepository.FindBy(u => u.RefreshTokens.Any(t => t.Token == token)).FirstOrDefault();
+            var user = _userRepository.FindByInclude(u => u.RefreshTokens.Any(t => t.Token == token), u => u.Role).FirstOrDefault();
 
             // return null if no user found with token
             if (user == null) return null;
@@ -81,7 +81,10 @@ namespace DailyNewsServer.Core.Services
             refreshToken.Revoked = DateTime.UtcNow;
             refreshToken.RevokedByIp = ipAddress;
             refreshToken.ReplacedByToken = newRefreshToken.Token;
-            _refreshTokenRepository.Insert(refreshToken);
+            
+            _refreshTokenRepository.Update(refreshToken, saveChanges: false);
+            _refreshTokenRepository.Insert(newRefreshToken, saveChanges: false);
+            _refreshTokenRepository.SaveChanges();
 
             // generate new jwt
             var jwtToken = generateJwtToken(user);

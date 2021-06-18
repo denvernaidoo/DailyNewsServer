@@ -18,13 +18,15 @@ namespace DailyNewsServer.Core.Interfaces
         Task<IEnumerable<TEntity>> FindByIncludeAsync(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includeProperties);
         TEntity FindByKey(int id);
         Task<TEntity> FindByKeyAsync(int id);
-        void Update(TEntity entity);
-        Task UpdateAsync(TEntity entity);
-        void UpdateRange(List<TEntity> entities);
-        Task UpdateRangeAsync(List<TEntity> entities);
-        void Delete(int id);
-        Task DeleteAsync(int id);
-        void Insert(TEntity entity);
-        Task InsertAsync(TEntity entity);
+        void Update(TEntity entity, bool saveChanges = true);
+        Task UpdateAsync(TEntity entity, bool saveChanges = true);
+        void UpdateRange(List<TEntity> entities, bool saveChanges = true);
+        Task UpdateRangeAsync(List<TEntity> entities, bool saveChanges = true);
+        void Delete(int id, bool saveChanges = true);
+        Task DeleteAsync(int id, bool saveChanges = true);
+        void Insert(TEntity entity, bool saveChanges = true);
+        Task InsertAsync(TEntity entity, bool saveChanges = true);
+        void SaveChanges();
+        Task SaveChangesAsync();
     }
 }

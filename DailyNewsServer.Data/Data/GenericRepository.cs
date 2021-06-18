@@ -52,19 +52,25 @@ namespace DailyNewsServer.Data.Data
             return results;
         }
 
-        public void Update(TEntity entity)
+        public void Update(TEntity entity, bool saveChanges = true)
         {
             _dBSet.Update(entity);
-            _context.SaveChanges();
+            if (saveChanges)
+            {
+                _context.SaveChanges();
+            }
         }
 
-        public void UpdateRange(List<TEntity> entities)
+        public void UpdateRange(List<TEntity> entities, bool saveChanges = true)
         {
             _dBSet.UpdateRange(entities);
-            _context.SaveChanges();
+            if (saveChanges)
+            {
+                _context.SaveChanges();
+            }
         }
 
-        public void Delete(int id)
+        public void Delete(int id, bool saveChanges = true)
         {
             var entity = FindByKey(id);
             if (entity == null)
@@ -72,16 +78,27 @@ namespace DailyNewsServer.Data.Data
                 throw new ArgumentNullException("delete entity cannot be found");
             }
             _dBSet.Remove(entity);
-            _context.SaveChanges();
+            if (saveChanges)
+            {
+                _context.SaveChanges();
+            }
         }
 
-        public void Insert(TEntity entity)
+        public void Insert(TEntity entity, bool saveChanges = true)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
             _dBSet.Add(entity);
+            if (saveChanges)
+            {
+                _context.SaveChanges();
+            }
+        }
+
+        public void SaveChanges()
+        {
             _context.SaveChanges();
         }
         #endregion
@@ -118,32 +135,49 @@ namespace DailyNewsServer.Data.Data
             return results;
         }
 
-        public async Task UpdateAsync(TEntity entity)
+        public async Task UpdateAsync(TEntity entity, bool saveChanges = true)
         {
             _dBSet.Update(entity);
-            await _context.SaveChangesAsync();
+            if (saveChanges)
+            {
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task UpdateRangeAsync(List<TEntity> entities)
+        public async Task UpdateRangeAsync(List<TEntity> entities, bool saveChanges = true)
         {
             _dBSet.UpdateRange(entities);
-            await _context.SaveChangesAsync();
+            if (saveChanges)
+            {
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id, bool saveChanges = true)
         {
             var entity = await FindByKeyAsync(id);
             _dBSet.Remove(entity);
-            await _context.SaveChangesAsync();
+            if (saveChanges)
+            {
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task InsertAsync(TEntity entity)
+        public async Task InsertAsync(TEntity entity, bool saveChanges = true)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
             _dBSet.Add(entity);
+            if (saveChanges)
+            {
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task SaveChangesAsync()
+        {
             await _context.SaveChangesAsync();
         }
         #endregion

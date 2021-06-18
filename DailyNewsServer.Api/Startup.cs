@@ -74,10 +74,12 @@ namespace DailyNewsServer.Api
 
             var TokenValidationParameters = new TokenValidationParameters
             {
-                ValidIssuer = "https://csharpapi.com",
-                ValidAudience = "https://csharpapi.com",
+                ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["AppSettings:Secret"])),
-                ClockSkew = TimeSpan.Zero // remove delay of token when expire
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                // set clockskew to zero so tokens expire exactly at token expiration time (instead of 5 minutes later)
+                ClockSkew = TimeSpan.Zero
             };
 
             services.AddAuthentication(options =>
