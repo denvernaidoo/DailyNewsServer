@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DailyNewsServer.Core.Interfaces.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DailyNewsServer.Core.Models.Authenticate
+namespace DailyNewsServer.Core.Models
 {
-    public class RefreshToken
+    public class RefreshToken: IEntity
     {
-        public int RefreshTokenId { get; set; }
+        public int Id { get; set; }
         public int UserId { get; set; }
         public string Token { get; set; }
         public DateTime Expires { get; set; }

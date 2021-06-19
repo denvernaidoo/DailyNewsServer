@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DailyNewsServer.Core.Interfaces
+namespace DailyNewsServer.Core.Interfaces.Data
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {

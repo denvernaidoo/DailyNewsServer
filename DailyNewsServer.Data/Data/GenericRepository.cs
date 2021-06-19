@@ -1,4 +1,4 @@
-﻿using DailyNewsServer.Core.Interfaces;
+﻿using DailyNewsServer.Core.Interfaces.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DailyNewsServer.Data.Data
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class, IEntity
     {
         internal DbContext _context;
         internal DbSet<TEntity> _dBSet;
@@ -35,8 +35,7 @@ namespace DailyNewsServer.Data.Data
 
         public TEntity FindByKey(int id)
         {
-            var lambda = Utilities.BuildExpressionForFindByKey<TEntity>(id);
-            return _dBSet.AsNoTracking().SingleOrDefault(lambda);
+            return _dBSet.AsNoTracking().SingleOrDefault(e => e.Id == id);
         }
 
         public IEnumerable<TEntity> AllInclude(params Expression<Func<TEntity, object>>[] includeProperties)
@@ -118,8 +117,7 @@ namespace DailyNewsServer.Data.Data
 
         public async Task<TEntity> FindByKeyAsync(int id)
         {
-            var lambda = Utilities.BuildExpressionForFindByKey<TEntity>(id);
-            return await _dBSet.AsNoTracking().SingleOrDefaultAsync(lambda);
+            return await _dBSet.AsNoTracking().SingleOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<IEnumerable<TEntity>> AllIncludeAsync(params Expression<Func<TEntity, object>>[] includeProperties)
@@ -156,6 +154,10 @@ namespace DailyNewsServer.Data.Data
         public async Task DeleteAsync(int id, bool saveChanges = true)
         {
             var entity = await FindByKeyAsync(id);
+            if (entity == null)
+            {
+                throw new ArgumentNullException("delete entity cannot be found");
+            }
             _dBSet.Remove(entity);
             if (saveChanges)
             {

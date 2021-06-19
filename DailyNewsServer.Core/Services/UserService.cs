@@ -1,4 +1,5 @@
 ﻿using DailyNewsServer.Core.Interfaces;
+using DailyNewsServer.Core.Interfaces.Data;
 using DailyNewsServer.Core.Models;
 using DailyNewsServer.Core.Models.Authenticate;
 using DailyNewsServer.Core.Models.Config;
@@ -56,7 +57,7 @@ namespace DailyNewsServer.Core.Services
 
             // authentication successful so generate jwt and refresh tokens
             var jwtToken = generateJwtToken(user);
-            var refreshToken = generateRefreshToken(ipAddress, user.UserId);
+            var refreshToken = generateRefreshToken(ipAddress, user.Id);
 
             // save refresh token
             _refreshTokenRepository.Insert(refreshToken);
@@ -77,7 +78,7 @@ namespace DailyNewsServer.Core.Services
             if (!refreshToken.IsActive) return null;
 
             // replace old refresh token with a new one and save
-            var newRefreshToken = generateRefreshToken(ipAddress, user.UserId);
+            var newRefreshToken = generateRefreshToken(ipAddress, user.Id);
             refreshToken.Revoked = DateTime.UtcNow;
             refreshToken.RevokedByIp = ipAddress;
             refreshToken.ReplacedByToken = newRefreshToken.Token;

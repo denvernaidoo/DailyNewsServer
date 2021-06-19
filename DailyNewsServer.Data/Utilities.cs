@@ -7,6 +7,7 @@ namespace DailyNewsServer.Data
 {
     public static class Utilities
     {
+        //sample to build lambda to select a key where the key name is made up using the entity name (like UserId/AccountId/InvoiceId in this implementation), this is better than DbSet.Find() only when you want no tracking
         public static Expression<Func<TEntity, bool>> BuildExpressionForFindByKey<TEntity>(int id)
         {
             var item = Expression.Parameter(typeof(TEntity), "entity");

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DailyNewsServer.Core.Interfaces.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DailyNewsServer.Core.Models
 {
-    public class Role
+    public class Role: IEntity
     {
-        public int RoleId { get; set; }
+        public int Id { get; set; }
         public string Description { get; set; }
         public ICollection<User> Users { get; set; }
     }

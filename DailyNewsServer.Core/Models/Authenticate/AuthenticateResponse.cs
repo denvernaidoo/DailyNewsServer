@@ -18,7 +18,7 @@ namespace DailyNewsServer.Core.Models.Authenticate
 
         public AuthenticateResponse(User user, string jwtToken, string refreshToken)
         {
-            Id = user.UserId;
+            Id = user.Id;
             FirstName = user.FirstName;
             LastName = user.Surname;
             Username = user.EmailAddress;

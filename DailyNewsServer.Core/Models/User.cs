@@ -1,4 +1,5 @@
-﻿using DailyNewsServer.Core.Models.Authenticate;
+﻿using DailyNewsServer.Core.Interfaces.Data;
+using DailyNewsServer.Core.Models.Authenticate;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,9 +7,9 @@ using System.Text.Json.Serialization;
 
 namespace DailyNewsServer.Core.Models
 {
-    public class User
+    public class User : IEntity
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string EmailAddress { get; set; }
         public string PasswordHash { get; set; }
         public string FirstName { get; set; }
