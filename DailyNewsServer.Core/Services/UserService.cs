@@ -115,7 +115,7 @@ namespace DailyNewsServer.Core.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _userRepository.All();
+            return _userRepository.AllInclude(u => u.Role);
         }
 
         public User GetById(int id)

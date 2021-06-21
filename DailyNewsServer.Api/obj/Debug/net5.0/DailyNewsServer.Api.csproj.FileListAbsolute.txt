@@ -158,3 +158,5 @@ C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Api\bin\Debug\net5.0\Serilog.Sin
 C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Api\bin\Debug\net5.0\Serilog.Sinks.File.dll
 C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Api\bin\Debug\net5.0\Serilog.Sinks.MSSqlServer.dll
 C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Api\bin\Debug\net5.0\Serilog.Sinks.PeriodicBatching.dll
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Api\bin\Debug\net5.0\AutoMapper.dll
+C:\denvernaidoo\DailyNewsServer\DailyNewsServer.Api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

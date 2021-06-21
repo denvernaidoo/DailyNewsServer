@@ -1,10 +1,10 @@
 ﻿using Amazon.S3;
 using DailyNewsServer.Core.Interfaces;
 using DailyNewsServer.Core.Interfaces.Data;
+using DailyNewsServer.Core.Interfaces.Files;
 using DailyNewsServer.Core.Models.Config;
 using DailyNewsServer.Core.Services;
 using DailyNewsServer.Data;
-using DailyNewsServer.Data.Data;
 using DailyNewsServer.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -18,6 +18,9 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Diagnostics;
 using System.Text;
+using AutoMapper;
+using System.Reflection;
+using DailyNewsServer.Data.Repositories;
 
 namespace DailyNewsServer.Api
 {
@@ -50,6 +53,8 @@ namespace DailyNewsServer.Api
 
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddSwaggerGen(c =>
             {

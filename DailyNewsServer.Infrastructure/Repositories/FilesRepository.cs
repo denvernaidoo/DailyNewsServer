@@ -4,6 +4,7 @@ using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Transfer;
 using DailyNewsServer.Core.Interfaces;
+using DailyNewsServer.Core.Interfaces.Files;
 using DailyNewsServer.Core.Models.Communication.Files;
 using Microsoft.AspNetCore.Http;
 using System;

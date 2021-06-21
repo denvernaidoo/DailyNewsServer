@@ -1,4 +1,6 @@
-﻿using DailyNewsServer.Core.Interfaces;
+﻿using AutoMapper;
+using DailyNewsServer.Api.ViewModels;
+using DailyNewsServer.Core.Interfaces;
 using DailyNewsServer.Core.Models;
 using DailyNewsServer.Core.Models.Authenticate;
 using Microsoft.AspNetCore.Authorization;
@@ -23,10 +25,12 @@ namespace DailyNewsServer.Api.Controllers
     public class UsersController : BaseController
     {
         private ILogger<UsersController> _logger;
+        private IMapper _mapper;
         private IUserService _userService;
-        public UsersController(ILogger<UsersController> logger, IUserService userService)
+        public UsersController(ILogger<UsersController> logger, IMapper mapper, IUserService userService)
         {
             _logger = logger;
+            _mapper = mapper;
             _userService = userService;
         }
         
@@ -79,7 +83,7 @@ namespace DailyNewsServer.Api.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _userService.GetAll();
+            var users = _mapper.Map<List<User>, List<UserVM>>(_userService.GetAll().ToList());
             return Ok(users);
         }
 
